@@ -6,6 +6,7 @@ let mode = 'Normal';
 let drawActive;
 let rowCount = 16;
 
+//Setting for shaded drawing
 function drawShaded() {
 	let currentShade = this.style.backgroundColor;
 	
@@ -18,6 +19,7 @@ function drawShaded() {
 	this.style.backgroundColor = newShade;
 }
 
+//Setting for colored drawing
 function drawColored() {
 	let randomRed = Math.floor(Math.random() * 256);
 	let randomGreen = Math.floor(Math.random() * 256);
@@ -25,11 +27,13 @@ function drawColored() {
 	this.style.backgroundColor = 'rgba(' + randomRed + ',' + randomGreen + ',' + randomBlue + ',.5)';
 }
 
+//Setting for blue drawing
 function drawNormal() {
 	this.style.backgroundColor = 'blue';
 };
 
-function notReadyToDraw() {  //Makes drawing inactive
+//Makes drawing inactive
+function notReadyToDraw() {
 	drawActive = 'Off';
 	drawButton.removeEventListener('click', notReadyToDraw);
 	drawButton.addEventListener('click', readyToDraw);
@@ -41,7 +45,8 @@ function notReadyToDraw() {  //Makes drawing inactive
 	onBox.forEach(box => box.removeEventListener('mouseover', drawShaded));
 }
 
-function readyToDraw() { //Makes drawing active
+//Makes drawing active
+function readyToDraw() {
 	drawActive = 'On';
 	drawButton.removeEventListener('click', readyToDraw);
 	drawButton.addEventListener('click', notReadyToDraw);
@@ -73,6 +78,7 @@ function buildGrid() {
 	};
 };	
 
+//New pad construction
 function updateRowCount() {
 	rowCount = document.getElementById('submitField').value;
 		
